@@ -37,19 +37,19 @@
               Address
             </h4>
             <div class="contact_link_box">
-              <a href="">
+              <a href="https://www.google.com/maps/place/Shukan+Mall">
                 <i class="fa fa-map-marker" aria-hidden="true"></i>
                 <span>
                   Location
                 </span>
               </a>
-              <a href="">
+              <a href="tel:+919979166500">
                 <i class="fa fa-phone" aria-hidden="true"></i>
                 <span>
                   Call +91 9979166500
                 </span>
               </a>
-              <a href="">
+              <a href="mailto:eduneurohrx@gmail.com"  >
                 <i class="fa fa-envelope" aria-hidden="true"></i>
                 <span>
                   eduneurohrx@gmail.com
@@ -88,19 +88,19 @@
               Links
             </h4>
             <div class="info_links">
-              <a class="active" href="index.html">
+              <a class="active" href="{{ route('home') }}">
                 <img src="images/nav-bullet.png" alt="">
                 Home
               </a>
-              <a class="" href="about.html">
+              <a class="" href="{{ route('jobs') }}">
                 <img src="images/nav-bullet.png" alt="">
                 About
               </a>
-              <a class="" href="jobs.html">
+              <a class="" href="{{ route('about') }}">
                 <img src="images/nav-bullet.png" alt="">
                 Jobs
               </a>
-              <a class="" href="contact.html">
+              <a class="" href="{{ route('contact') }}">
                 <img src="images/nav-bullet.png" alt="">
                 Contact Us
               </a>

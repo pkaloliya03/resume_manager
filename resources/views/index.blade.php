@@ -44,182 +44,40 @@
   <!-- End Header Section -->
 
   <!-- slider section -->
-  <section class="slider_section ">
-    <div class="slider_bg_box">
-      <img src="images/slider-bg.jpg" alt="">
+  <!-- Slider Section -->
+  <section class="slider_section" style="position: relative; width: 100%; height: 100vh; overflow: hidden;">
+    <!-- Background Image -->
+    <div class="slider_bg_box" style="
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background-image: url('{{ asset('images/public-discussion.jpg') }}'); 
+    background-size: cover; 
+    background-position: center; 
+    z-index: -1;">
     </div>
+
     <div id="customCarousel1" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
+        <!-- Slide 1 -->
         <div class="carousel-item active">
-          <div class="container ">
+          <div class="container">
             <div class="row">
-              <div class="col-md-7 ">
+              <div class="col-md-7">
                 <div class="detail-box">
                   <h1>
-                    We Provide best <br>
+                    We Provide the Best <br>
                     Job Opportunities
                   </h1>
                   <p>
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum magnam, voluptates distinctio, officia architecto tenetur debitis hic aspernatur libero commodi atque fugit adipisci, blanditiis quidem dolorum odit voluptas? Voluptate, eveniet?
+                    Connect with top recruiters and accelerate your career with verified job listings.
                   </p>
                   <div class="btn-box">
-                    <a href="{{ route('jobs') }}" class="btn1">
-                      Get A Job
-                    </a>
+                    <a href="{{ route('jobs') }}" class="btn1">Get A Job</a>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        {{-- <div class="carousel-item">
-            <div class="container ">
-              <div class="row">
-                <div class="col-md-7 ">
-                  <div class="detail-box">
-                    <h1>
-                      We Provide best <br>
-                      Job Opportunities
-                    </h1>
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum magnam, voluptates distinctio, officia architecto tenetur debitis hic aspernatur libero commodi atque fugit adipisci, blanditiis quidem dolorum odit voluptas? Voluptate, eveniet?
-                    </p>
-                    <div class="btn-box">
-                      <a href="" class="btn1">
-                        Get A Quote
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="container ">
-              <div class="row">
-                <div class="col-md-7 ">
-                  <div class="detail-box">
-                    <h1>
-                      We Provide best <br>
-                      Job Opportunities
-                    </h1>
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum magnam, voluptates distinctio, officia architecto tenetur debitis hic aspernatur libero commodi atque fugit adipisci, blanditiis quidem dolorum odit voluptas? Voluptate, eveniet?
-                    </p>
-                    <div class="btn-box">
-                      <a href="" class="btn1">
-                        Get A Quote
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <ol class="carousel-indicators">
-          <li data-target="#customCarousel1" data-slide-to="0" class="active"></li>
-          <li data-target="#customCarousel1" data-slide-to="1"></li>
-          <li data-target="#customCarousel1" data-slide-to="2"></li>
-        </ol>
-      </div>--}}
-
-  </section>
-  <!-- end slider section -->
-  </div>
-
-
-  <!-- service section -->
-
-  <section class="service_section layout_padding">
-    <div class="service_container">
-      <div class="container ">
-        <div class="heading_container">
-          <h2>
-            Our <span>Jobs</span>
-          </h2>
-          <p>
-            There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration
-          </p>
-        </div>
-        <div class="row">
-          <div class="col-md-6 ">
-            <div class="box ">
-              <div class="img-box">
-                <img src="images/s1.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h5>
-                  Air Transport
-                </h5>
-                <p>
-                  fact that a reader will be distracted by the readable content of a page when looking at its layout.
-                  The
-                  point of using
-                </p>
-                <a href="">
-                  Read More
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 ">
-            <div class="box ">
-              <div class="img-box">
-                <img src="images/s2.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h5>
-                  Cargo Transport
-                </h5>
-                <p>
-                  fact that a reader will be distracted by the readable content of a page when looking at its layout.
-                  The
-                  point of using
-                </p>
-                <a href="">
-                  Read More
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 ">
-            <div class="box ">
-              <div class="img-box">
-                <img src="images/s3.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h5>
-                  Trucks Transport
-                </h5>
-                <p>
-                  fact that a reader will be distracted by the readable content of a page when looking at its layout.
-                  The
-                  point of using
-                </p>
-                <a href="">
-                  Read More
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 ">
-            <div class="box ">
-              <div class="img-box">
-                <img src="images/s4.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h5>
-                  Train Transport
-                </h5>
-                <p>
-                  fact that a reader will be distracted by the readable content of a page when looking at its layout.
-                  The
-                  point of using
-                </p>
-                <a href="">
-                  Read More
-                </a>
               </div>
             </div>
           </div>
@@ -227,10 +85,12 @@
       </div>
     </div>
   </section>
+  <!-- End Slider Section -->
 
-  <!-- end service section -->
+  </div>
 
-  <br><br>
+
+  <br><br><br><br>
 
   <!-- about section -->
 
@@ -250,7 +110,7 @@
               are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in
               the middle of text. All
             </p>
-            <a href="">
+            <a href="{{ route('about') }}">
               Read More
             </a>
           </div>
@@ -266,37 +126,6 @@
   </section>
 
   <!-- end about section -->
-
-  <!-- track section -->
-
-  {{-- <section class="track_section layout_padding">
-    <div class="track_bg_box">
-      <img src="images/track-bg.jpg" alt="">
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6">
-          <div class="heading_container">
-            <h2>
-              Track Your Shipment
-            </h2>
-          </div>
-          <p>
-            Iste reprehenderit maiores facilis saepe cumque molestias. Labore iusto excepturi, laborum aliquid pariatur veritatis autem, mollitia sint nesciunt hic error porro.
-            Deserunt officia unde repellat beatae ipsum sed. Aperiam tempora consectetur voluptas magnam maxime asperiores quas similique repudiandae, veritatis reiciendis harum fuga atque.
-          </p>
-          <form action="">
-            <input type="text" placeholder="Enter Your Tracking Number" />
-            <button type="submit">
-              Track
-            </button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section> --}}
-
-  <!-- end track section -->
 
   <!-- client section -->
 

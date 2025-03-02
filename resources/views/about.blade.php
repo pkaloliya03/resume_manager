@@ -1,94 +1,6 @@
-<!-- <!DOCTYPE html>
-<html>
-
-<head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <meta name="keywords" content="" />
-  <meta name="description" content="" />
-  <meta name="author" content="" />
-  <link rel="shortcut icon" href="images/fevicon.png" type="">
-
-  <title> EduNeuroHRx </title>
-
-
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
-
-  <link href="css/font-awesome.min.css" rel="stylesheet" />
-
-  <link href="css/style.css" rel="stylesheet" />
-
-  <link href="css/responsive.css" rel="stylesheet" />
-
-</head>
-
-<body class="sub_page">
-
-
-  @include("header")
-
-
-<br><br>
-
-
-  <section class="about_section layout_padding-bottom">
-    <div class="container  ">
-      <div class="row">
-        <div class="col-md-6">
-          <div class="detail-box">
-            <div class="heading_container">
-              <h2>
-                About <span>Us</span>
-              </h2>
-            </div>
-            <p>
-              There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration
-              in some form, by injected humour, or randomised words which don't look even slightly believable. If you
-              are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in
-              the middle of text. All
-            </p>
-            <a href="">
-              Read More
-            </a>
-          </div>
-        </div>
-        <div class="col-md-6 ">
-          <div class="img-box">
-            <img src="images/about-img.jpg" alt="">
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-
-
-  @include("footer")
-
-
-  <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-  </script>
-  <script type="text/javascript" src="js/bootstrap.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
-  </script>
-  <script type="text/javascript" src="js/custom.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap">
-  </script>
- 
-
-</body>
-
-</html> -->
-
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -100,6 +12,7 @@
   <link href="css/style.css" rel="stylesheet" />
   <link href="css/responsive.css" rel="stylesheet" />
 </head>
+
 <body class="sub_page">
   @include("header")
   <br><br>
@@ -128,54 +41,234 @@
   <!-- Our Mission & Vision -->
   <section class="mission_section layout_padding">
     <div class="container">
-      <div class="heading_container text-center">
+      <div class="heading_container">
         <h2>Our <span>Mission & Vision</span></h2>
       </div>
-      <div class="row">
-        <div class="col-md-6 text-center">
-          <h4>🎯 Our Mission</h4>
-          <p>To bridge the gap between job seekers and top companies by providing an easy-to-use platform for career growth.</p>
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <div class="box">
+            <div class="icon">🎯</div>
+            <h4>Our Mission</h4>
+            <p>To bridge the gap between job seekers and top companies by providing an easy-to-use platform for career growth.</p>
+          </div>
         </div>
-        <div class="col-md-6 text-center">
-          <h4>🚀 Our Vision</h4>
-          <p>To become the most trusted job-seeking platform, connecting professionals with their dream jobs globally.</p>
+        <div class="col-md-6">
+          <div class="box">
+            <div class="icon">🚀</div>
+            <h4>Our Vision</h4>
+            <p>To become the most trusted job-seeking platform, connecting professionals with their dream jobs globally.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
+
+  <style>
+    /* Centering the Heading */
+    .heading_container {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .heading_container h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 32px;
+      /* Adjust size if needed */
+      font-weight: bold;
+    }
+
+    /* Box Styling */
+    .box {
+      background-color: #ffffff;
+      /* Adjust to match your design */
+      color: #333;
+      /* Adjust text color */
+      padding: 30px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.1);
+      /* Soft shadow for depth */
+      border: 1px solid #ddd;
+      /* Adjust border color */
+      margin-top: 20px;
+    }
+
+    .box .icon {
+      font-size: 40px;
+      color: #fdd835;
+      /* Adjust icon color */
+      margin-bottom: 10px;
+    }
+
+    .box h4 {
+      font-weight: bold;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    .box p {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+  </style>
+
+
+
+
 
   <!-- Why Choose Us -->
   <section class="why_choose_us layout_padding">
     <div class="container">
-      <div class="heading_container text-center">
-        <h2>Why <span>Choose Us?</span></h2>
+      <div class="heading_container" style="text-align: center; margin-bottom: 30px;">
+        <h2 style="font-size: 32px; font-weight: bold; display: inline-block;">Why <span>Choose Us?</span></h2>
       </div>
-      <div class="row">
-        <div class="col-md-4 text-center">
-          <h5>✔ Verified Job Listings</h5>
-          <p>We ensure all job postings are verified and from trusted employers.</p>
+      <div class="row justify-content-center">
+        <div class="col-md-4">
+          <div class="box">
+            <div class="icon">✔</div>
+            <h5>Verified Job Listings</h5>
+            <p>We ensure all job postings are verified and from trusted employers.</p>
+          </div>
         </div>
-        <div class="col-md-4 text-center">
-          <h5>✔ Career Support</h5>
-          <p>We offer resume building, interview tips, and career guidance.</p>
+        <div class="col-md-4">
+          <div class="box">
+            <div class="icon">✔</div>
+            <h5>Career Support</h5>
+            <p>We offer resume building, interview tips, and career guidance.</p>
+          </div>
         </div>
-        <div class="col-md-4 text-center">
-          <h5>✔ Fast Hiring Process</h5>
-          <p>Connect with recruiters quickly and get hired faster.</p>
+        <div class="col-md-4">
+          <div class="box">
+            <div class="icon">✔</div>
+            <h5>Fast Hiring Process</h5>
+            <p>Connect with recruiters quickly and get hired faster.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Our Partners -->
-  <section class="partners_section layout_padding">
-    <div class="container">
-      <div class="heading_container text-center">
-        <h2>Our <span>Partners</span></h2>
-      </div>
-      <p class="text-center">We collaborate with MNCs, IT companies, and Business Administration firms.</p>
+  <style>
+    /* Box Styling (Same as Mission & Vision Section) */
+    .box {
+      background-color: #ffffff;
+      /* Match with your design */
+      color: #333;
+      padding: 30px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.1);
+      border: 1px solid #ddd;
+      margin-top: 20px;
+    }
+
+    .box .icon {
+      font-size: 40px;
+      color: #fdd835;
+      /* Adjust icon color */
+      margin-bottom: 10px;
+    }
+
+    .box h5 {
+      font-weight: bold;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    .box p {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+  </style>
+
+
+  <!-- Our Partners Section -->
+<section class="our_partners layout_padding">
+  <div class="container">
+    <div class="heading_container" style="text-align: center; margin-bottom: 30px;">
+      <h2 style="font-size: 32px; font-weight: bold;">Our <span>Partners</span></h2>
     </div>
-  </section>
+    <div class="owl-carousel partners-slider">
+      <div class="partner-box"><img src="{{ asset('images/google.png') }}" alt="Google"></div>
+      <div class="partner-box"><img src="{{ asset('images/infosys.png') }}" alt="Microsoft"></div>
+      <div class="partner-box"><img src="{{ asset('images/wipro.png') }}" alt="Amazon"></div>
+      <div class="partner-box"><img src="{{ asset('images/oracle.png') }}" alt="Apple"></div>
+      <div class="partner-box"><img src="{{ asset('images/ibm.png') }}" alt="IBM"></div>
+      <div class="partner-box"><img src="{{ asset('images/tesla.png') }}" alt="Tesla"></div>
+      <div class="partner-box"><img src="https://via.placeholder.com/150" alt="Sample"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Include Owl Carousel -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+<!-- CSS for Boxed Slider -->
+<style>
+  .partners-slider {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+  }
+
+  .partner-box {
+    background: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin: 10px;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .partner-box:hover {
+    transform: scale(1.05);
+  }
+
+  .partner-box img {
+    max-width: 120px;
+    max-height: 60px;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+  }
+</style>
+
+<!-- Owl Carousel Initialization -->
+<script>
+  $(document).ready(function() {
+    console.log("Checking jQuery:", typeof jQuery !== "undefined");
+    console.log("Initializing Owl Carousel...");
+
+    if ($(".partners-slider").length) {
+      $(".partners-slider").owlCarousel({
+        loop: true,
+        margin: 15,
+        nav: true,
+        dots: true,
+        autoplay: true,
+        autoplayTimeout: 2000,
+        smartSpeed: 500,
+        responsive: {
+          0: { items: 2 },
+          600: { items: 3 },
+          1000: { items: 5 }
+        }
+      });
+      console.log("Owl Carousel Initialized!");
+    } else {
+      console.error("Owl Carousel not found!");
+    }
+  });
+</script>
+
+
+
 
   <!-- Success Stories -->
   <section class="success_section layout_padding">
@@ -202,4 +295,5 @@
   <script type="text/javascript" src="js/bootstrap.js"></script>
   <script type="text/javascript" src="js/custom.js"></script>
 </body>
+
 </html>
