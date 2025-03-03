@@ -11,58 +11,6 @@
   <link href="css/font-awesome.min.css" rel="stylesheet" />
   <link href="css/style.css" rel="stylesheet" />
   <link href="css/responsive.css" rel="stylesheet" />
-</head>
-
-<body class="sub_page">
-  @include("header")
-  <br><br>
-
-  <!-- About Us Section -->
-  <section class="about_section layout_padding-bottom">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6">
-          <div class="detail-box">
-            <div class="heading_container">
-              <h2>About <span>Us</span></h2>
-            </div>
-            <p>We provide a platform for job seekers, including students, freshers, and experienced employees looking for better opportunities.</p>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="img-box">
-            <img src="images/about-img.jpg" alt="">
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Our Mission & Vision -->
-  <section class="mission_section layout_padding">
-    <div class="container">
-      <div class="heading_container">
-        <h2>Our <span>Mission & Vision</span></h2>
-      </div>
-      <div class="row justify-content-center">
-        <div class="col-md-6">
-          <div class="box">
-            <div class="icon">🎯</div>
-            <h4>Our Mission</h4>
-            <p>To bridge the gap between job seekers and top companies by providing an easy-to-use platform for career growth.</p>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="box">
-            <div class="icon">🚀</div>
-            <h4>Our Vision</h4>
-            <p>To become the most trusted job-seeking platform, connecting professionals with their dream jobs globally.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <style>
     /* Centering the Heading */
     .heading_container {
@@ -111,10 +59,65 @@
       font-size: 16px;
       line-height: 1.5;
     }
+
+    .heading_container1 h1 {
+      text-align: center;
+      font-size: 32px;
+      /* Adjust size if needed */
+      font-weight: bold;
+    }
+
+    .heading_container1 span {
+      color: #0a97b0;
+    }
   </style>
+</head>
+
+<body class="sub_page">
+  @include("header")
+  <br><br>
+
+  <!-- About Us Section -->
+  <!-- About Us Section -->
+  <section class="about_section layout_padding-bottom">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+          <div class="heading_container1">
+            <h1>About <span class=".us_color">Us</span></h1>
+          </div>
+          <br><br>
+          <p>We provide a platform for job seekers, including students, freshers, and experienced employees looking for better opportunities.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
 
-
+  <!-- Our Mission & Vision -->
+  <section class="mission_section layout_padding">
+    <div class="container">
+      <div class="heading_container">
+        <h2>Our <span>Mission & Vision</span></h2>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <div class="box">
+            <div class="icon">🎯</div>
+            <h4>Our Mission</h4>
+            <p>To bridge the gap between job seekers and top companies by providing an easy-to-use platform for career growth.</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="box">
+            <div class="icon">🚀</div>
+            <h4>Our Vision</h4>
+            <p>To become the most trusted job-seeking platform, connecting professionals with their dream jobs globally.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
 
   <!-- Why Choose Us -->
@@ -191,12 +194,15 @@
     </div>
     <div class="owl-carousel partners-slider">
       <div class="partner-box"><img src="{{ asset('images/google.png') }}" alt="Google"></div>
-      <div class="partner-box"><img src="{{ asset('images/infosys.png') }}" alt="Microsoft"></div>
-      <div class="partner-box"><img src="{{ asset('images/wipro.png') }}" alt="Amazon"></div>
-      <div class="partner-box"><img src="{{ asset('images/oracle.png') }}" alt="Apple"></div>
+      <div class="partner-box"><img src="{{ asset('images/microsoft.png') }}" alt="Microsoft"></div>
+      <div class="partner-box"><img src="{{ asset('images/amazon.png') }}" alt="Amazon"></div>
+      <div class="partner-box"><img src="{{ asset('images/apple.png') }}" alt="Apple"></div>
       <div class="partner-box"><img src="{{ asset('images/ibm.png') }}" alt="IBM"></div>
       <div class="partner-box"><img src="{{ asset('images/tesla.png') }}" alt="Tesla"></div>
-      <div class="partner-box"><img src="https://via.placeholder.com/150" alt="Sample"></div>
+      <div class="partner-box"><img src="{{ asset('images/accenture.png') }}" alt="Accenture"></div>
+      <div class="partner-box"><img src="{{ asset('images/tcs.png') }}" alt="TCS"></div>
+      <div class="partner-box"><img src="{{ asset('images/infosys.png') }}" alt="Infosys"></div>
+      <div class="partner-box"><img src="{{ asset('images/wipro.png') }}" alt="Wipro"></div>
     </div>
   </div>
 </section>
@@ -231,8 +237,8 @@
   }
 
   .partner-box img {
-    max-width: 120px;
-    max-height: 60px;
+    max-width: 140px; /* Increased size */
+    max-height: 80px; /* Adjusted height */
     object-fit: contain;
     display: block;
     margin: auto;
@@ -242,9 +248,6 @@
 <!-- Owl Carousel Initialization -->
 <script>
   $(document).ready(function() {
-    console.log("Checking jQuery:", typeof jQuery !== "undefined");
-    console.log("Initializing Owl Carousel...");
-
     if ($(".partners-slider").length) {
       $(".partners-slider").owlCarousel({
         loop: true,
@@ -252,22 +255,17 @@
         nav: true,
         dots: true,
         autoplay: true,
-        autoplayTimeout: 2000,
-        smartSpeed: 500,
+        autoplayTimeout: 2500, /* Adjusted speed */
+        smartSpeed: 600,
         responsive: {
           0: { items: 2 },
           600: { items: 3 },
           1000: { items: 5 }
         }
       });
-      console.log("Owl Carousel Initialized!");
-    } else {
-      console.error("Owl Carousel not found!");
     }
   });
 </script>
-
-
 
 
   <!-- Success Stories -->
@@ -277,18 +275,75 @@
         <h2>Success <span>Stories</span></h2>
       </div>
       <div class="row">
-        <div class="col-md-4 text-center">
-          <h6>"I landed my first IT job within a month!" - Rahul Sharma</h6>
+        <div class="col-md-4">
+          <div class="success_card text-center">
+            <img src="images/rahul.jpg" alt="Rahul Sharma">
+            <h6>"I landed my first IT job within a month!"</h6>
+            <p>- Rahul Sharma</p>
+          </div>
         </div>
-        <div class="col-md-4 text-center">
-          <h6>"This platform made my job switch process seamless!" - Priya Patel</h6>
+        <div class="col-md-4">
+          <div class="success_card text-center">
+            <img src="images/priya.jpg" alt="Priya Patel">
+            <h6>"This platform made my job switch process seamless!"</h6>
+            <p>- Priya Patel</p>
+          </div>
         </div>
-        <div class="col-md-4 text-center">
-          <h6>"I got connected with top MNCs!" - Amit Verma</h6>
+        <div class="col-md-4">
+          <div class="success_card text-center">
+            <img src="images/amit.jpg" alt="Amit Verma">
+            <h6>"I got connected with top Multi National Company's!"</h6>
+            <p>- Amit Verma</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
+
+  <style>
+    .success_section {
+      padding: 50px 0;
+    }
+
+    .success_card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin-top: 20px;
+      transition: transform 0.3s ease;
+      text-align: center;
+    }
+
+    .success_card:hover {
+      transform: translateY(-5px);
+    }
+
+    .success_card img {
+    width: 100px;  /* Increased size */
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    border: 4px solid #007bff;
+}
+
+
+    .success_card h6 {
+      font-size: 16px;
+      font-weight: bold;
+      color: #333;
+      margin-top: 10px;
+    }
+
+    .success_card p {
+      font-size: 14px;
+      color: #666;
+      font-style: italic;
+      margin-top: 5px;
+    }
+  </style>
+
 
   @include("footer")
   <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>

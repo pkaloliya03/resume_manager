@@ -967,3 +967,14 @@ a:focus {
   color: inherit;
 }
 /*# sourceMappingURL=style.css.map */
+
+.about_section .heading_container {
+  text-align: center;
+}
+
+.about_section p {
+  text-align: center;
+  font-size: 18px;
+  max-width: 800px;
+  margin: 0 auto;
+}
