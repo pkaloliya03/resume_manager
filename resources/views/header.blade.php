@@ -49,7 +49,7 @@
           <div class="header_bottom">
             <div class="container-fluid">
               <nav class="navbar navbar-expand-lg custom_nav-container">
-                <a class="navbar-brand" href="{{ route('home') }}">
+                <a class="navbar-brand" href="{{ route('admin.login') }}">
                   <span> EduNeuroHRx </span>
                 </a>
     

@@ -104,20 +104,19 @@
                 About <span>Us</span>
               </h2>
             </div>
+            <br>
             <p>
-              There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration
-              in some form, by injected humour, or randomised words which don't look even slightly believable. If you
-              are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in
-              the middle of text. All
+              EduNeuroHRx is a platform that connects job seekers with employers. We provide a platform for job seekers to find jobs and for employers to find the right candidates. We are committed to providing the best job opportunities to job seekers and the best candidates to employers. We are dedicated to helping job seekers find the right job and employers find the right candidate.
             </p>
+            <br>
             <a href="{{ route('about') }}">
               Read More
             </a>
           </div>
         </div>
         <div class="col-md-6 ">
-          <div class="img-box">
-            <img src="images/about-img.jpg" alt="">
+          <div>
+            <img src="images/aboutus.jpg" alt="">
           </div>
         </div>
 

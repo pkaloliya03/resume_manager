@@ -60,11 +60,11 @@
           <div class="col-md-6 ">
             <div class="box ">
               <div class="img-box">
-                <img src="images/s1.png" alt="">
+                <img src="images/google.png" alt="">
               </div>
               <div class="detail-box">
                 <h5>
-                  Air Transport
+                google
                 </h5>
                 <p>
                   fact that a reader will be distracted by the readable content of a page when looking at its layout.
@@ -72,7 +72,7 @@
                   point of using
                 </p>
                 <a href="">
-                  Read More
+                  Apply Now
                 </a>
               </div>
             </div>

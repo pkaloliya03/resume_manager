@@ -187,85 +187,97 @@
 
 
   <!-- Our Partners Section -->
-<section class="our_partners layout_padding">
-  <div class="container">
-    <div class="heading_container" style="text-align: center; margin-bottom: 30px;">
-      <h2 style="font-size: 32px; font-weight: bold;">Our <span>Partners</span></h2>
+  <section class="our_partners layout_padding">
+    <div class="container">
+      <div class="heading_container" style="text-align: center; margin-bottom: 30px;">
+        <h2 style="font-size: 32px; font-weight: bold;">Our <span>Partners</span></h2>
+      </div>
     </div>
-    <div class="owl-carousel partners-slider">
-      <div class="partner-box"><img src="{{ asset('images/google.png') }}" alt="Google"></div>
-      <div class="partner-box"><img src="{{ asset('images/microsoft.png') }}" alt="Microsoft"></div>
-      <div class="partner-box"><img src="{{ asset('images/amazon.png') }}" alt="Amazon"></div>
-      <div class="partner-box"><img src="{{ asset('images/apple.png') }}" alt="Apple"></div>
-      <div class="partner-box"><img src="{{ asset('images/ibm.png') }}" alt="IBM"></div>
-      <div class="partner-box"><img src="{{ asset('images/tesla.png') }}" alt="Tesla"></div>
-      <div class="partner-box"><img src="{{ asset('images/accenture.png') }}" alt="Accenture"></div>
-      <div class="partner-box"><img src="{{ asset('images/tcs.png') }}" alt="TCS"></div>
-      <div class="partner-box"><img src="{{ asset('images/infosys.png') }}" alt="Infosys"></div>
-      <div class="partner-box"><img src="{{ asset('images/wipro.png') }}" alt="Wipro"></div>
+    <div class="partners-slider">
+      <div class="partner-box">
+        <img src="images/google.png" alt="Partner 1">
+      </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <div class="partner-box">
+        <img src="images/oracle.png" alt="Partner 2">
+      </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <div class="partner-box">
+        <img src="images/infosys.png" alt="Partner 3">
+      </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <div class="partner-box">
+        <img src="images/wipro.png" alt="Partner 4">
+      </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     </div>
-  </div>
-</section>
+    </div>
+  </section>
 
-<!-- Include Owl Carousel -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+  <!-- Include Owl Carousel -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 
-<!-- CSS for Boxed Slider -->
-<style>
-  .partners-slider {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px 0;
-  }
-
-  .partner-box {
-    background: #fff;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    margin: 10px;
-    transition: transform 0.3s ease-in-out;
-  }
-
-  .partner-box:hover {
-    transform: scale(1.05);
-  }
-
-  .partner-box img {
-    max-width: 140px; /* Increased size */
-    max-height: 80px; /* Adjusted height */
-    object-fit: contain;
-    display: block;
-    margin: auto;
-  }
-</style>
-
-<!-- Owl Carousel Initialization -->
-<script>
-  $(document).ready(function() {
-    if ($(".partners-slider").length) {
-      $(".partners-slider").owlCarousel({
-        loop: true,
-        margin: 15,
-        nav: true,
-        dots: true,
-        autoplay: true,
-        autoplayTimeout: 2500, /* Adjusted speed */
-        smartSpeed: 600,
-        responsive: {
-          0: { items: 2 },
-          600: { items: 3 },
-          1000: { items: 5 }
-        }
-      });
+  <!-- CSS for Boxed Slider -->
+  <style>
+    .partners-slider {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px 0;
     }
-  });
-</script>
+
+    .partner-box {
+      background: #fff;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      margin: 10px;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .partner-box:hover {
+      transform: scale(1.05);
+    }
+
+    .partner-box img {
+      max-width: 140px;
+      /* Increased size */
+      max-height: 80px;
+      /* Adjusted height */
+      object-fit: contain;
+      display: block;
+      margin: auto;
+    }
+  </style>
+
+  <!-- Owl Carousel Initialization -->
+  <script>
+    $(document).ready(function() {
+      if ($(".partners-slider").length) {
+        $(".partners-slider").owlCarousel({
+          loop: true,
+          margin: 15,
+          nav: true,
+          dots: true,
+          autoplay: true,
+          autoplayTimeout: 2500,
+          /* Adjusted speed */
+          smartSpeed: 600,
+          responsive: {
+            0: {
+              items: 2
+            },
+            600: {
+              items: 3
+            },
+            1000: {
+              items: 5
+            }
+          }
+        });
+      }
+    });
+  </script>
 
 
   <!-- Success Stories -->
@@ -320,13 +332,14 @@
     }
 
     .success_card img {
-    width: 100px;  /* Increased size */
-    height: 100px;
-    object-fit: cover;
-    border-radius: 50%;
-    margin-bottom: 10px;
-    border: 4px solid #007bff;
-}
+      width: 100px;
+      /* Increased size */
+      height: 100px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 10px;
+      border: 4px solid #007bff;
+    }
 
 
     .success_card h6 {

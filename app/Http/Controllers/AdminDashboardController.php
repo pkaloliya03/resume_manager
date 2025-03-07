@@ -12,6 +12,6 @@ class AdminDashboardController extends Controller
     {
         $totalUsers = User::count();
 
-        return view('admin.dashboard', compact('totalUsers'));
+        return view('admin.layout', compact('totalUsers'));
     }
 }
