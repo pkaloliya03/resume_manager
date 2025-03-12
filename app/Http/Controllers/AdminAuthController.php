@@ -52,7 +52,7 @@ class AdminAuthController extends Controller
         Auth::guard('admin')->login($admin);
 
         // Redirect to dashboard
-        return redirect()->route('admin.layout')->with('success', 'Login successful!');
+        return redirect()->route('admin.home')->with('success', 'Login successful!');
     }
 
 

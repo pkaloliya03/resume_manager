@@ -63,7 +63,7 @@
                       <a class="nav-link" href="{{ route('home') }}">Home</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="{{ route('jobs') }}">Jobs</a>
+                      <a class="nav-link" href="{{ route('jobs.list') }}">Jobs</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="{{ route('about') }}">About</a>

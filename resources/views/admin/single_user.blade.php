@@ -1,66 +1,62 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Details</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-    <div class="container mt-5">
-        <h2 class="mb-4">User Details</h2>
-        <table class="table table-bordered">
-            <tr>
-                <th>ID</th>
-                <td>{{ $user->id }}</td>
-            </tr>
-            <tr>
-                <th>First Name</th>
-                <td>{{ $user->first_name }}</td>
-            </tr>
-            <tr>
-                <th>Middle Name</th>
-                <td>{{ $user->middle_name }}</td>
-            </tr>
-            <tr>
-                <th>Last Name</th>
-                <td>{{ $user->last_name }}</td>
-            </tr>
-            <tr>
-                <th>Age</th>
-                <td>{{ $user->age }}</td>
-            </tr>
-            <tr>
-                <th>Gender</th>
-                <td>{{ $user->gender }}</td>
-            </tr>
-            <tr>
-                <th>Role</th>
-                <td>{{ $user->role }}</td>
-            </tr>
-            <tr>
-                <th>Education</th>
-                <td>{{ $user->education }}</td>
-            </tr>
-            <tr>
-                <th>Experience</th>
-                <td>{{ $user->experience }}</td>
-            </tr>
-        </table>
+@extends('admin.layout')
 
-        <!-- Update Button -->
-        <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-warning">Update</a>
+@section('content')
+<div class="container mx-auto p-6">
+    <h2 class="text-2xl font-bold mb-4">User Details</h2>
+    
+    <table class="table-auto w-full border-collapse border border-gray-300 bg-white shadow-md">
+        <tr class="border border-gray-300">
+            <th class="p-2 border border-gray-300">ID</th>
+            <td class="p-2 border border-gray-300">{{ $user->id }}</td>
+        </tr>
+        <tr class="border border-gray-300">
+            <th class="p-2 border border-gray-300">First Name</th>
+            <td class="p-2 border border-gray-300">{{ $user->first_name }}</td>
+        </tr>
+        <tr class="border border-gray-300">
+            <th class="p-2 border border-gray-300">Middle Name</th>
+            <td class="p-2 border border-gray-300">{{ $user->middle_name }}</td>
+        </tr>
+        <tr class="border border-gray-300">
+            <th class="p-2 border border-gray-300">Last Name</th>
+            <td class="p-2 border border-gray-300">{{ $user->last_name }}</td>
+        </tr>
+        <tr class="border border-gray-300">
+            <th class="p-2 border border-gray-300">Age</th>
+            <td class="p-2 border border-gray-300">{{ $user->age }}</td>
+        </tr>
+        <tr class="border border-gray-300">
+            <th class="p-2 border border-gray-300">Gender</th>
+            <td class="p-2 border border-gray-300">{{ $user->gender }}</td>
+        </tr>
+        <tr class="border border-gray-300">
+            <th class="p-2 border border-gray-300">Role</th>
+            <td class="p-2 border border-gray-300">{{ $user->role }}</td>
+        </tr>
+        <tr class="border border-gray-300">
+            <th class="p-2 border border-gray-300">Education</th>
+            <td class="p-2 border border-gray-300">{{ $user->education }}</td>
+        </tr>
+        <tr class="border border-gray-300">
+            <th class="p-2 border border-gray-300">Experience</th>
+            <td class="p-2 border border-gray-300">{{ $user->experience }}</td>
+        </tr>
+    </table>
 
-        <!-- Delete Button -->
-        <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST" class="d-inline">
+    <!-- Buttons Section -->
+    <div class="mt-4 flex space-x-4">
+        <a href="{{ route('admin.users.edit', $user->id) }}" class="bg-yellow-500 text-white px-4 py-2 rounded">Update</a>
+        
+        <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST" class="inline-block">
             @csrf
             @method('DELETE')
-            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this user?');">
+            <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded" 
+                onclick="return confirm('Are you sure you want to delete this user?');">
                 Delete
             </button>
         </form>
 
-        <a href="{{ route('admin.users.index') }}" class="btn btn-secondary">Back to Users</a>
+        <a href="{{ route('admin.users.index') }}" class="bg-gray-500 text-white px-4 py-2 rounded">Back to Users</a>
     </div>
-</body>
-</html>
+</div>
+@endsection

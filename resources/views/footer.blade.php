@@ -92,7 +92,7 @@
                 <img src="images/nav-bullet.png" alt="">
                 Home
               </a>
-              <a class="" href="{{ route('jobs') }}">
+              <a class="" href="{{ route('jobs.list') }}">
                 <img src="images/nav-bullet.png" alt="">
                 About
               </a>

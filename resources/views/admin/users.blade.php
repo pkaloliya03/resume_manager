@@ -1,71 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('admin.layout')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EduNeuroHRx</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-
-<body class="bg-gray-100">
-<div class="flex h-screen">
-        <!-- Sidebar -->
-        <div class="w-64 bg-gray-800 text-white p-4 space-y-6">
-            <h2 class="text-2xl font-bold">Admin Panel</h2>
-            <nav>
-                <a href="{{ route('admin.layout') }}" class="block py-2 px-4 rounded hover:bg-gray-700">Home</a>
-                <a href="{{ route('admin.users.index') }}" class="block py-2 px-4 rounded hover:bg-gray-700">Users</a>
-                <a href="#" class="block py-2 px-4 rounded hover:bg-gray-700">Jobs/Recruiters</a>
-                <form action="{{ route('admin.logout') }}" method="POST">
-                    @csrf
-                    <button type="submit" class="block w-full text-left py-2 px-4 rounded hover:bg-gray-700">Logout</button>
-                </form>
-
-            </nav>
-        </div>
-    <div class="container mt-4">
-        <h2 class="mb-4">Registered Users</h2>
-        <div class="row">
-            <div class="col-12">
-                <table class="table table-bordered table-striped">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>First Name</th>
-                            <th>Middle Name</th>
-                            <th>Last Name</th>
-                            <th>Age</th>
-                            <th>Gender</th>
-                            <th>Role</th>
-                            <th>Education</th>
-                            <th>Experience</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($users as $user)
-                        <tr>
-                            <td>{{ $user->id }}</td>
-                            <td>{{ $user->first_name }}</td>
-                            <td>{{ $user->middle_name }}</td>
-                            <td>{{ $user->last_name }}</td>
-                            <td>{{ $user->age }}</td>
-                            <td>{{ $user->gender }}</td>
-                            <td>{{ $user->role }}</td>
-                            <td>{{ $user->education }}</td>
-                            <td>{{ $user->experience }}</td>
-                            <td>
-                                <a href="{{ route('admin.users.show', $user->id) }}" class="btn btn-primary btn-sm">View</a>
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
-        </div>
+@section('content')
+<div class="p-6">
+    <h1 class="font-bold mb-4 text-center text-xl">Registered Users</h1>
+    <div class="overflow-x-auto bg-white p-4 shadow-md rounded-lg">
+        <table class="table-auto w-full border border-gray-300">
+            <thead class="bg-gray-200">
+                <tr class="border border-gray-300">
+                    <th class="p-2 border border-gray-300">ID</th>
+                    <th class="p-2 border border-gray-300">First Name</th>
+                    <th class="p-2 border border-gray-300">Middle Name</th>
+                    <th class="p-2 border border-gray-300">Last Name</th>
+                    <th class="p-2 border border-gray-300">Age</th>
+                    <th class="p-2 border border-gray-300">Gender</th>
+                    <th class="p-2 border border-gray-300">Role</th>
+                    <th class="p-2 border border-gray-300">Education</th>
+                    <th class="p-2 border border-gray-300">Experience</th>
+                    <th class="p-2 border border-gray-300">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($users as $user)
+                <tr class="border border-gray-300">
+                    <td class="p-2 border border-gray-300">{{ $user->id }}</td>
+                    <td class="p-2 border border-gray-300">{{ $user->first_name }}</td>
+                    <td class="p-2 border border-gray-300">{{ $user->middle_name }}</td>
+                    <td class="p-2 border border-gray-300">{{ $user->last_name }}</td>
+                    <td class="p-2 border border-gray-300">{{ $user->age }}</td>
+                    <td class="p-2 border border-gray-300">{{ $user->gender }}</td>
+                    <td class="p-2 border border-gray-300">{{ $user->role }}</td>
+                    <td class="p-2 border border-gray-300">{{ $user->education }}</td>
+                    <td class="p-2 border border-gray-300">{{ $user->experience }}</td>
+                    <td class="p-2 border border-gray-300">
+                        <a href="{{ route('admin.users.show', $user->id) }}" class="bg-blue-500 text-white px-3 py-1 rounded">View</a>
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
     </div>
-</body>
-
-</html>
+</div>
+@endsection

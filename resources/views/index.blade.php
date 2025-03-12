@@ -75,7 +75,7 @@
                     Connect with top recruiters and accelerate your career with verified job listings.
                   </p>
                   <div class="btn-box">
-                    <a href="{{ route('jobs') }}" class="btn1">Get A Job</a>
+                    <a href="{{ route('jobs.list') }}" class="btn1">Get A Job</a>
                   </div>
                 </div>
               </div>

@@ -6,15 +6,12 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AdminUserController;
+use App\Http\Controllers\JobController;
 
 
 Route::get('/', function () {
     return view('index');
 })->name('home');
-
-Route::get('/jobs', function () {
-    return view('jobs');
-})->name('jobs');
 
 Route::get('/about', function () {
     return view('about');
@@ -54,13 +51,9 @@ Route::middleware(['auth:admin'])->group(function () {
 });
 
 Route::middleware(['auth:admin'])->group(function () {
-    Route::get('/admin/layout', function () {
-        return view('admin.layout');
-    })->name('admin.layout');
-});
-
-Route::middleware(['auth:admin'])->group(function () {
-    Route::get('/admin/layout', [AdminDashboardController::class, 'index'])->name('admin.layout');
+    Route::get('/admin/home', function () {
+        return view('admin.admin_home');
+    })->name('admin.home');
 });
 
 Route::get('/admin/users', function () {
@@ -75,6 +68,15 @@ Route::prefix('admin')->group(function () {
     Route::delete('/users/{id}', [AdminUserController::class, 'deleteUser'])->name('admin.users.destroy');
 });
 
+Route::middleware(['auth:admin'])->prefix('admin')->group(function () {
+    Route::get('/jobs', [JobController::class, 'index'])->name('admin.jobs.index');
+    Route::get('/jobs/create', [JobController::class, 'create'])->name('admin.jobs.create');
+    Route::post('/jobs', [JobController::class, 'store'])->name('admin.jobs.store');
+    Route::get('/jobs/{id}/edit', [JobController::class, 'edit'])->name('admin.jobs.edit');
+    Route::put('/jobs/{id}', [JobController::class, 'update'])->name('admin.jobs.update');
+    Route::delete('/jobs/{id}', [JobController::class, 'destroy'])->name('admin.jobs.destroy');
+});
 
-
+Route::get('/jobs', [JobController::class, 'showJobs'])->name('jobs.list');
+Route::get('/apply/{job}', [JobController::class, 'apply'])->name('job.apply')->middleware('auth');
 
