@@ -31,7 +31,7 @@
                     <td class="py-3 px-4 font-semibold">{{ $job->title }}</td>
                     <td class="py-3 px-4">{{ $job->company_name }}</td>
                     <td class="py-3 px-4">{{ $job->education }}</td>
-                    <td class="py-3 px-4">{{ $job->experience }} years</td>
+                    <td class="py-3 px-4">{{ $job->experience }}</td>
                     <td class="py-3 px-4">{{ $job->location }}</td>
                     <td class="py-3 px-4">₹{{ number_format($job->salary, 2) ?? 'N/A' }}</td>
                     <td class="py-3 px-4 text-center flex justify-center space-x-2">

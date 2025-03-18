@@ -10,12 +10,17 @@ class Job extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title', 
-        'company_name', 
+        'title',
+        'company_name',
         'education',
         'experience',
-        'description', 
-        'location', 
-        'salary'
+        'location',
+        'salary',
+        'job_type',
+        'work_mode',
+        'required_skills',
+        'last_date_to_apply',
+        'hr_contact_name',
+        'hr_email'
     ];
 }

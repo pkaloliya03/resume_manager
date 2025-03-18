@@ -78,5 +78,6 @@ Route::middleware(['auth:admin'])->prefix('admin')->group(function () {
 });
 
 Route::get('/jobs', [JobController::class, 'showJobs'])->name('jobs.list');
+Route::get('/job/view/{id}', [JobController::class, 'view'])->name('job_view');
 Route::get('/apply/{job}', [JobController::class, 'apply'])->name('job.apply')->middleware('auth');
 

@@ -23,25 +23,22 @@ class JobController extends Controller
     // Store new job in the database
     public function store(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'title' => 'required|string|max:255',
             'company_name' => 'required|string|max:255',
-            'education' => 'required|string|max:255',
-            'experience' => 'required|string|max:255',
-            'description' => 'required|string',
-            'location' => 'required|string|max:255',
+            'education' => 'required|string',
+            'experience' => 'required|string',
+            'location' => 'required|string',
             'salary' => 'nullable|numeric',
+            'job_type' => 'required|in:Full-time,Part-time,Internship',
+            'work_mode' => 'required|in:On-site,Remote,Hybrid',
+            'required_skills' => 'required|string',
+            'last_date_to_apply' => 'required|date',
+            'hr_contact_name' => 'required|string|max:255',
+            'hr_email' => 'required|email|unique:jobs,hr_email'
         ]);
 
-        Job::create([
-            'title' => $request->title,
-            'company_name' => $request->company_name,
-            'education' => $request->education,
-            'experience' => $request->experience,
-            'description' => $request->description,
-            'location' => $request->location,
-            'salary' => $request->salary,
-        ]);
+        Job::create($validated);
 
         return redirect()->route('admin.jobs.index')->with('success', 'Job added successfully.');
     }
@@ -59,16 +56,35 @@ class JobController extends Controller
         $job = Job::findOrFail($id);
 
         $request->validate([
-            'title' => 'required',
-            'company_name' => 'required',
-            'education' => 'required',
-            'experience' => 'required',
-            'description' => 'required',
-            'location' => 'required',
+            'title' => 'required|string|max:255',
+            'company_name' => 'required|string|max:255',
+            'education' => 'required|string',
+            'experience' => 'required|string',
+            'location' => 'required|string',
             'salary' => 'nullable|numeric',
+            'job_type' => 'required|in:Full-time,Part-time,Internship',
+            'work_mode' => 'required|in:On-site,Remote,Hybrid',
+            'required_skills' => 'required|string',
+            'last_date_to_apply' => 'required|date',
+            'hr_contact_name' => 'required|string|max:255',
+            'hr_email' => 'required|email|unique:jobs,hr_email,' . $id
         ]);
 
-        $job->update($request->all());
+        // Update only the required columns
+        $job->update([
+            'title' => $request->input('title'),
+            'company_name' => $request->input('company_name'),
+            'education' => $request->input('education'),
+            'experience' => $request->input('experience'),
+            'location' => $request->input('location'),
+            'salary' => $request->input('salary'),
+            'job_type' => $request->input('job_type'),
+            'work_mode' => $request->input('work_mode'),
+            'required_skills' => $request->input('required_skills'),
+            'last_date_to_apply' => $request->input('last_date_to_apply'),
+            'hr_contact_name' => $request->input('hr_contact_name'),
+            'hr_email' => $request->input('hr_email'),
+        ]);
 
         return redirect()->route('admin.jobs.index')->with('success', 'Job updated successfully.');
     }
@@ -91,5 +107,11 @@ class JobController extends Controller
     {
         $job = Job::findOrFail($jobId);
         return view('apply', compact('job'));
+    }
+
+    public function view($id)
+    {
+        $job = Job::findOrFail($id);
+        return view('jobs_view', compact('job'));
     }
 }

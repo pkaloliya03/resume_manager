@@ -51,35 +51,33 @@
 
                 <br>
 
-                <div class="row">
-                    @if($jobs->count() > 0)
-                    @foreach($jobs as $job)
-                    <div class="col-md-4 mb-4">
-                        <div class="card shadow-lg p-3 rounded">
-                            <div class="card-body">
-                                <h4 class="card-title font-weight-bold">{{ $job->title }}</h4><br>
-                                <p><strong>Company:</strong> {{ $job->company_name }}</p>
-                                <p><strong>Location:</strong> {{ $job->location }}</p>
-                                <p><strong>Experience:</strong> {{ $job->experience }}</p>
-                                <p><strong>Salary:</strong> ₹{{ number_format($job->salary, 2) ?? 'N/A' }}</p>
-                                <p><strong>Last Date:</strong> {{ \Carbon\Carbon::parse($job->last_date_to_apply)->format('d/m/Y') }}</p>
+                <div class="container mt-5">
+                    <div class="card shadow-lg p-4">
+                        <h2 class="card-title font-weight-bold">{{ $job->title }}</h2>
+                        <br>
+                        <p><strong>Company:</strong> {{ $job->company_name }}</p>
+                        <p><strong>Location:</strong> {{ $job->location }}</p>
+                        <p><strong>Experience:</strong> {{ $job->experience }}</p>
+                        <p><strong>Salary:</strong> ₹{{ number_format($job->salary, 2) ?? 'N/A' }}</p>
+                        <p><strong>Education:</strong> {{ $job->education }}</p>
+                        <p><strong>Job Type:</strong> {{ $job->job_type }}</p>
+                        <p><strong>Work Mode:</strong> {{ $job->work_mode }}</p>
+                        <p><strong>Required Skills:</strong> {{ $job->required_skills }}</p>
+                        <p><strong>HR Contact Name:</strong> {{ $job->hr_contact_name }}</p>
+                        <p><strong>HR Email:</strong> {{ $job->hr_email }}</p>
+                        <p><strong>Last Date to Apply:</strong> {{ \Carbon\Carbon::parse($job->last_date_to_apply)->format('d/m/Y') }}</p>
 
-                                <!-- View More Details Button -->
-                                <a href="{{ route('job_view', $job->id) }}" class="btn btn-primary">View</a>
-
-                                <!-- Check if the user is logged in -->
-                                @if(Auth::check())
-                                <a href="{{ route('job.apply', $job->id) }}" class="btn btn-primary">Apply Now</a>
-                                @else
-                                <a href="{{ route('login') }}" class="btn btn-danger">Login to Apply</a>
-                                @endif
-                            </div>
+                        <div class="d-flex justify-content-start mt-3" style="gap: 10px;">
+                            @if(Auth::check())
+                            <a href="{{ route('job.apply', $job->id) }}" class="btn btn-primary">Apply Now</a>
+                            @else
+                            <a href="{{ route('login') }}" class="btn btn-danger">Login to Apply</a>
+                            @endif
+                            <a href="{{ route('jobs.list') }}" class="btn btn-secondary">Back</a>
                         </div>
+
+
                     </div>
-                    @endforeach
-                    @else
-                    <p class="text-center text-muted w-100">No job openings available at the moment.</p>
-                    @endif
                 </div>
 
 
