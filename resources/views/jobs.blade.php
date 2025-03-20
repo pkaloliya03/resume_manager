@@ -50,6 +50,41 @@
                 </div>
 
                 <br>
+                <hr>
+
+                <!-- Resume Upload Section (Visible to All) -->
+                <div class="resume-upload-section mt-5">
+                    <h3>Upload Your Resume</h3>
+                    <p>Enhance your chances of getting hired by uploading your resume.</p>
+
+                    <!-- Display success message -->
+                    @if(session('success'))
+                    <div class="alert alert-success">{{ session('success') }}</div>
+                    @endif
+
+                    <!-- Resume Upload Form -->
+                    <form action="{{ route('resume.store') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <div class="form-group">
+                            <label for="resume">Choose Resume (PDF, DOC, DOCX):</label>
+                            <input type="file" class="form-control" name="resume" accept=".pdf,.doc,.docx" required>
+                        </div>
+
+                        <!-- Upload Button with Auth Check -->
+                        <div class="mt-3">
+                            @if(Auth::check())
+                            <button type="submit" class="btn btn-success">Upload Resume</button>
+                            @else
+                            <button type="button" class="btn btn-success" disabled>Upload Resume (Login Required)</button>
+                            <a href="{{ route('login') }}" class="btn btn-danger ml-2">Login to Upload</a>
+                            @endif
+                        </div>
+
+
+                    </form>
+                </div>
+
+                <br><br><br><br>
 
                 <div class="row">
                     @if($jobs->count() > 0)
@@ -81,7 +116,6 @@
                     <p class="text-center text-muted w-100">No job openings available at the moment.</p>
                     @endif
                 </div>
-
 
             </div>
         </div>

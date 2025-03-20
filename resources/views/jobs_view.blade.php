@@ -76,10 +76,8 @@
                             <a href="{{ route('jobs.list') }}" class="btn btn-secondary">Back</a>
                         </div>
 
-
                     </div>
                 </div>
-
 
             </div>
         </div>

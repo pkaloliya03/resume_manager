@@ -7,6 +7,7 @@ use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\JobController;
+use App\Http\Controllers\ResumeController;
 
 
 Route::get('/', function () {
@@ -68,6 +69,12 @@ Route::prefix('admin')->group(function () {
     Route::delete('/users/{id}', [AdminUserController::class, 'deleteUser'])->name('admin.users.destroy');
 });
 
+Route::prefix('admin')->group(function () {
+    Route::get('/resumes', [ResumeController::class, 'index'])->name('admin.resumes');
+    Route::delete('/resumes/{id}', [ResumeController::class, 'destroy'])->name('admin.resumes.destroy');
+
+});
+
 Route::middleware(['auth:admin'])->prefix('admin')->group(function () {
     Route::get('/jobs', [JobController::class, 'index'])->name('admin.jobs.index');
     Route::get('/jobs/create', [JobController::class, 'create'])->name('admin.jobs.create');
@@ -81,3 +88,4 @@ Route::get('/jobs', [JobController::class, 'showJobs'])->name('jobs.list');
 Route::get('/job/view/{id}', [JobController::class, 'view'])->name('job_view');
 Route::get('/apply/{job}', [JobController::class, 'apply'])->name('job.apply')->middleware('auth');
 
+Route::post('/resume/store', [ResumeController::class, 'store'])->name('resume.store');
