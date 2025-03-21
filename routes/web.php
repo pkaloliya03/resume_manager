@@ -52,6 +52,13 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::post('/admin/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
 });
 
+Route::get('/forgot-password', function () {
+    return view('auth.forgot_password');
+})->name('password.request');
+Route::post('/password-verify', [AuthController::class, 'verifyEmail'])->name('password.verify');
+Route::get('/reset-password', [AuthController::class, 'showResetForm'])->name('password.reset');
+Route::post('/password-update', [AuthController::class, 'updatePassword'])->name('password.update');
+
 Route::middleware(['auth:admin'])->group(function () {
     Route::get('/admin/home', function () {
         return view('admin.admin_home');

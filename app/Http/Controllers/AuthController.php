@@ -93,4 +93,48 @@ class AuthController extends Controller
 
         return redirect()->route('home')->with('success', 'Logged out successfully!');
     }
+
+    public function verifyEmail(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email',
+        ]);
+
+        // Check if the email exists
+        $user = User::where('email', $request->email)->first();
+
+        if (!$user) {
+            return redirect()->back()->with('error', 'Email does not exist.');
+        }
+
+        // If email exists, redirect to reset password page
+        return redirect()->route('password.reset', ['email' => $request->email]);
+    }
+
+
+    // ✅ Show Reset Password Form
+    public function showResetForm(Request $request)
+    {
+        return view('auth.reset_password', ['email' => $request->get('email')]);
+    }
+
+    // ✅ Update the Password in the Database
+    public function updatePassword(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email|exists:users,email',
+            'password' => 'required|min:8|confirmed',
+        ]);
+
+        $user = User::where('email', $request->email)->first();
+
+        if (!$user) {
+            return back()->withErrors(['email' => 'This email does not exist.'])->withInput();
+        }
+
+        $user->password = Hash::make($request->password);
+        $user->save();
+
+        return redirect()->route('login')->with('success', 'Your password has been successfully reset. Please log in.');
+    }
 }

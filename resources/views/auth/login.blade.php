@@ -12,20 +12,14 @@
     <div class="w-full max-w-md bg-white p-6 rounded-lg shadow-lg">
         <h2 class="text-2xl font-bold text-center mb-4">User Login</h2>
 
-        <!-- Success Message (Registration Successful) -->
-        <!-- @if(session('success'))
-            <div class="mb-3 p-2 bg-green-100 text-green-600 rounded text-center">
-                {{ session('success') }}
-            </div>
-        @endif -->
-
+        <!-- Success Message -->
         @if(session('success'))
         <div class="mb-3 p-2 bg-green-100 text-green-600 rounded">
             {{ session('success') }}
         </div>
         @endif
 
-        <!-- Error Message (Invalid Credentials) -->
+        <!-- Error Message -->
         @if ($errors->any())
         <div class="mb-3 p-2 bg-red-100 text-red-600 rounded">
             <p>{{ $errors->first('email') }}</p>
@@ -42,13 +36,18 @@
                 <label class="block font-semibold">Password</label>
                 <input type="password" name="password" class="w-full h-8 p-2 border rounded" required>
             </div>
+
+            <!-- Forgot Password Link -->
+            <div class="text-right mb-3">
+                <a href="{{ route('password.request') }}" class="text-blue-600 text-sm font-semibold hover:underline">Forgot Password?</a>
+            </div>
+
             <button type="submit" class="w-full p-2 bg-blue-600 text-white rounded">Login</button>
         </form>
 
         <p class="text-center mt-3">
             Don't have an account? <a href="{{ route('register') }}" class="text-blue-600 font-semibold">Register here</a>
         </p>
-
     </div>
 </body>
 
