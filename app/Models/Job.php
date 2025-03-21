@@ -23,4 +23,10 @@ class Job extends Model
         'hr_contact_name',
         'hr_email'
     ];
+
+    // Relationship with JobApplication
+    public function applications()
+    {
+        return $this->hasMany(JobApplication::class);
+    }
 }

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Resume;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 
 class ResumeController extends Controller
 {
@@ -19,20 +20,23 @@ class ResumeController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'resume' => 'required|mimes:pdf,doc,docx|max:2048'
+            'resume' => 'required|mimes:pdf,doc,docx|max:2048',
         ]);
 
-        $fileName = time() . '_' . $request->file('resume')->getClientOriginalName();
-        $filePath = $request->file('resume')->storeAs('resumes', $fileName, 'public');
+        $user = Auth::user();
+        $file = $request->file('resume');
+        $originalName = $file->getClientOriginalName(); // Get Original File Name
+        $filePath = $file->storeAs('resumes', $file->getClientOriginalName(), 'public'); // Store with Original Name
 
         Resume::create([
-            'user_id' => Auth::id(),
-            'filename' => $fileName,  // Use filename instead of file_path
-            'file_path' => $filePath
+            'user_id' => $user->id,
+            'file_path' => 'storage/resumes/' . $file->getClientOriginalName() // Adjust Path for Public Access
         ]);
 
-        return back()->with('success', 'Resume uploaded successfully!');
+        return redirect()->back()->with('success', 'Resume uploaded successfully.');
     }
+
+
 
     public function destroy($id)
     {

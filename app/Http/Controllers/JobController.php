@@ -4,23 +4,27 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Job;
+use App\Models\JobApplication;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use App\Models\Resume;
 
 class JobController extends Controller
 {
-    // Show all jobs
+    // Show all jobs (Admin Panel)
     public function index()
     {
-        $jobs = Job::all();
+        $jobs = Job::with('applications')->get(); // Fetch jobs with their applications
         return view('admin.admin_jobs', compact('jobs'));
     }
 
-    // Show job creation form
+    // Show job creation form (Admin Panel)
     public function create()
     {
         return view('admin.create_jobs');
     }
 
-    // Store new job in the database
+    // Store new job in the database (Admin Panel)
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -43,14 +47,14 @@ class JobController extends Controller
         return redirect()->route('admin.jobs.index')->with('success', 'Job added successfully.');
     }
 
-    // Show edit form
+    // Show edit form (Admin Panel)
     public function edit($id)
     {
         $job = Job::findOrFail($id);
         return view('admin.edit_job', compact('job'));
     }
 
-    // Update job details
+    // Update job details (Admin Panel)
     public function update(Request $request, $id)
     {
         $job = Job::findOrFail($id);
@@ -61,7 +65,7 @@ class JobController extends Controller
             'education' => 'required|string',
             'experience' => 'required|string',
             'location' => 'required|string',
-            'salary' => 'nullable|numeric',
+            'salary' => 'required|string|max:255',
             'job_type' => 'required|in:Full-time,Part-time,Internship',
             'work_mode' => 'required|in:On-site,Remote,Hybrid',
             'required_skills' => 'required|string',
@@ -70,25 +74,12 @@ class JobController extends Controller
             'hr_email' => 'required|email|unique:jobs,hr_email,' . $id
         ]);
 
-        // Update only the required columns
-        $job->update([
-            'title' => $request->input('title'),
-            'company_name' => $request->input('company_name'),
-            'education' => $request->input('education'),
-            'experience' => $request->input('experience'),
-            'location' => $request->input('location'),
-            'salary' => $request->input('salary'),
-            'job_type' => $request->input('job_type'),
-            'work_mode' => $request->input('work_mode'),
-            'required_skills' => $request->input('required_skills'),
-            'last_date_to_apply' => $request->input('last_date_to_apply'),
-            'hr_contact_name' => $request->input('hr_contact_name'),
-            'hr_email' => $request->input('hr_email'),
-        ]);
+        $job->update($request->all());
 
         return redirect()->route('admin.jobs.index')->with('success', 'Job updated successfully.');
     }
 
+    // Delete a job (Admin Panel)
     public function destroy($id)
     {
         $job = Job::findOrFail($id);
@@ -97,21 +88,76 @@ class JobController extends Controller
         return redirect()->route('admin.jobs.index')->with('success', 'Job deleted successfully.');
     }
 
+    // Show all available jobs (User Side)
     public function showJobs()
     {
-        $jobs = Job::latest()->get(); // Fetch all jobs from the database
-        return view('jobs', compact('jobs')); // Pass jobs to the view
+        $jobs = Job::latest()->get();
+        return view('jobs', compact('jobs'));
     }
 
+    // Show job application form (User Side)
     public function apply($jobId)
     {
+        if (!Auth::check()) {
+            return redirect()->route('login')->with('error', 'You need to log in to apply.');
+        }
+
         $job = Job::findOrFail($jobId);
-        return view('apply', compact('job'));
+        return view('jobs.apply', compact('job'));
     }
 
+    // View single job details (User Side)
     public function view($id)
     {
         $job = Job::findOrFail($id);
         return view('jobs_view', compact('job'));
+    }
+
+    // Apply for a Job (User)
+    public function checkApplication($jobId)
+    {
+        $hasApplied = JobApplication::where('user_id', Auth::id())
+            ->where('job_id', $jobId)
+            ->exists();
+
+        return response()->json(['hasApplied' => $hasApplied]);
+    }
+
+    public function submitApplication($jobId)
+    {
+        // Check if user is logged in
+        if (!Auth::check()) {
+            return redirect()->route('login')->with('error', 'You need to log in to apply for a job.');
+        }
+
+        $user = Auth::user();
+
+        // Check if the user has uploaded a resume
+        $hasResume = Resume::where('user_id', $user->id)->exists();
+        if (!$hasResume) {
+            return redirect()->back()->withErrors(['resume' => 'You must upload your resume before applying for a job.']);
+        }
+
+        // Check if the user has already applied
+        $hasApplied = JobApplication::where('user_id', $user->id)->where('job_id', $jobId)->exists();
+        if ($hasApplied) {
+            return redirect()->back()->with('error', 'You have already applied for this job.');
+        }
+
+        // Create job application
+        JobApplication::create([
+            'user_id' => $user->id,
+            'job_id' => $jobId,
+        ]);
+
+        return redirect()->back()->with('success', 'You have successfully applied for the job.');
+    }
+
+
+    // Show all job applications (Admin Panel)
+    public function showApplications()
+    {
+        $applications = JobApplication::with(['user', 'job'])->latest()->get();
+        return view('admin.applications', compact('applications'));
     }
 }

@@ -8,6 +8,7 @@ use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\ResumeController;
+use App\Http\Controllers\AdminJobController;
 
 
 Route::get('/', function () {
@@ -72,20 +73,36 @@ Route::prefix('admin')->group(function () {
 Route::prefix('admin')->group(function () {
     Route::get('/resumes', [ResumeController::class, 'index'])->name('admin.resumes');
     Route::delete('/resumes/{id}', [ResumeController::class, 'destroy'])->name('admin.resumes.destroy');
-
 });
 
-Route::middleware(['auth:admin'])->prefix('admin')->group(function () {
+// Admin Job Management Routes
+Route::prefix('admin')->group(function () {
     Route::get('/jobs', [JobController::class, 'index'])->name('admin.jobs.index');
     Route::get('/jobs/create', [JobController::class, 'create'])->name('admin.jobs.create');
     Route::post('/jobs', [JobController::class, 'store'])->name('admin.jobs.store');
     Route::get('/jobs/{id}/edit', [JobController::class, 'edit'])->name('admin.jobs.edit');
     Route::put('/jobs/{id}', [JobController::class, 'update'])->name('admin.jobs.update');
     Route::delete('/jobs/{id}', [JobController::class, 'destroy'])->name('admin.jobs.destroy');
+    Route::get('/jobs/applications', [JobController::class, 'viewApplications'])->name('admin.jobs.applications');
 });
 
+// Public Job Listing and Application Routes
 Route::get('/jobs', [JobController::class, 'showJobs'])->name('jobs.list');
 Route::get('/job/view/{id}', [JobController::class, 'view'])->name('job_view');
-Route::get('/apply/{job}', [JobController::class, 'apply'])->name('job.apply')->middleware('auth');
 
+// Job Application Routes (No Middleware)
+Route::get('/apply/{job}', [JobController::class, 'apply'])->name('job.apply');
+Route::post('/apply/{job}', [JobController::class, 'submitApplication'])->name('job.submitapplication');
+Route::get('/check-application/{job}', [JobController::class, 'checkApplication'])->name('job.checkApplication');
+
+// Resume Upload
 Route::post('/resume/store', [ResumeController::class, 'store'])->name('resume.store');
+
+// Admin Job Applications Handling
+Route::prefix('admin')->group(function () {
+    Route::get('/applications', [AdminJobController::class, 'applications'])->name('admin.applications');
+    Route::post('/applications/{id}/approve', [AdminJobController::class, 'approve'])->name('admin.applications.approve');
+    Route::post('/applications/{id}/reject', [AdminJobController::class, 'reject'])->name('admin.applications.reject');
+    Route::delete('/applications/{id}', [AdminJobController::class, 'destroy'])->name('admin.applications.destroy');
+});
+

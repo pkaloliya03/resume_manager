@@ -10,8 +10,8 @@ class CreateResumesTable extends Migration
     {
         Schema::create('resumes', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->string('file_path');
+            $table->unsignedBigInteger('user_id')->unique(); // One resume per user
+            $table->string('file_path'); // Stores the path to the uploaded resume
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

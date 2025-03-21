@@ -29,5 +29,14 @@ class User extends Authenticatable
     protected $casts = [
         'password' => 'hashed',
     ];
-    
+
+    public function applications()
+    {
+        return $this->hasMany(JobApplication::class);
+    }
+
+    public function resume()
+    {
+        return $this->hasOne(Resume::class);
+    }
 }

@@ -33,7 +33,13 @@
                     <td class="py-3 px-4">{{ $job->education }}</td>
                     <td class="py-3 px-4">{{ $job->experience }}</td>
                     <td class="py-3 px-4">{{ $job->location }}</td>
-                    <td class="py-3 px-4">₹{{ number_format($job->salary, 2) ?? 'N/A' }}</td>
+                    <td class="py-3 px-4">
+                        @if(preg_match('/\d/', $job->salary)) 
+                            {!! preg_replace('/(\d[\d,.]*)/', '₹$1', $job->salary) !!}
+                        @else 
+                            {{ $job->salary ?? 'N/A' }}
+                        @endif
+                    </td>                                                           
                     <td class="py-3 px-4 text-center">
                         <div class="flex justify-center space-x-3">
                             <a href="{{ route('admin.jobs.edit', $job->id) }}" class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded shadow text-sm transition">
