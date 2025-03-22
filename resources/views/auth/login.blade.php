@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>EduNeuroHRx</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
@@ -30,11 +30,21 @@
             @csrf
             <div class="mb-3">
                 <label class="block font-semibold">Email</label>
-                <input type="email" name="email" value="{{ old('email') }}" class="w-full h-8 p-2 border rounded" required>
+                <input type="email" name="email" value="{{ old('email') }}" class="w-full h-10 p-2 border rounded" required>
             </div>
-            <div class="mb-3">
+
+            <!-- Password Field with Toggle -->
+            <div class="mb-3 relative">
                 <label class="block font-semibold">Password</label>
-                <input type="password" name="password" class="w-full h-8 p-2 border rounded" required>
+                <div class="relative">
+                    <input type="password" name="password" id="password" class="w-full h-10 p-2 border rounded pr-10" required>
+                    <button type="button" onclick="togglePassword()" class="absolute inset-y-0 right-3 flex items-center">
+                        <svg id="toggleIcon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                            <circle cx="12" cy="12" r="3"/>
+                        </svg>
+                    </button>
+                </div>
             </div>
 
             <!-- Forgot Password Link -->
@@ -49,6 +59,21 @@
             Don't have an account? <a href="{{ route('register') }}" class="text-blue-600 font-semibold">Register here</a>
         </p>
     </div>
+
+    <script>
+        function togglePassword() {
+            let passwordField = document.getElementById("password");
+            let icon = document.getElementById("toggleIcon");
+
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                icon.innerHTML = '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><path d="M12 15c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3"/>'; // Open Eye Icon
+            } else {
+                passwordField.type = "password";
+                icon.innerHTML = '<path d="M17.94 17.94A10.06 10.06 0 0 1 12 20c-7 0-11-8-11-8s1.63-3.38 5-5m6-3c7 0 11 8 11 8s-1.2 2.48-3.73 4.4"/><line x1="1" y1="1" x2="23" y2="23"/>'; // Closed Eye Icon
+            }
+        }
+    </script>
 </body>
 
 </html>

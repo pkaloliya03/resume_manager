@@ -23,18 +23,39 @@
                             <td class="p-3 border border-gray-300 text-center">
                                 {{ $application->user->first_name }} {{ $application->user->last_name }}
                             </td>
-                            <td class="p-3 border border-gray-300 text-center">{{ $application->job->company_name }}</td>
-                            <td class="p-3 border border-gray-300 text-center">{{ $application->job->title }}</td>
+                            <td class="p-3 border border-gray-300 text-center font-bold">{{ $application->job->company_name }}</td>
+                            <td class="p-3 border border-gray-300 text-center font-bold ">{{ $application->job->title }}</td>
                             <td class="p-3 border border-gray-300 text-center">
-                                @if ($application->user->resume)
-                                    <a href="{{ Storage::url($application->user->resume->file_path) }}" target="_blank"
-                                        class="bg-green-500 hover:bg-green-600 text-white px-4 py-1 rounded shadow">
-                                        <i class="fas fa-eye"></i> View
-                                    </a>
+                                @php
+                                    $resume = $application->user->resume; // Get the user's resume
+                                @endphp
+                            
+                                @if ($resume && $resume->file_path)
+                                    @php
+                                        $fileExtension = pathinfo($resume->file_path, PATHINFO_EXTENSION);
+                                        $fileUrl = Storage::url($resume->file_path);
+                                    @endphp
+                            
+                                    @if ($fileExtension === 'pdf')
+                                        <a href="{{ asset($resume->file_path) }}" target="_blank" 
+                                           class="bg-green-500 hover:bg-green-600 text-white px-4 py-1 rounded shadow">
+                                            <i class="fas fa-eye"></i> View
+                                        </a>
+                                    @elseif (in_array($fileExtension, ['doc', 'docx']))
+                                        <a href="https://docs.google.com/gview?url={{ url($fileUrl) }}&embedded=true" target="_blank" 
+                                           class="bg-green-500 hover:bg-green-600 text-white px-4 py-1 rounded shadow">
+                                            <i class="fas fa-eye"></i> View
+                                        </a>
+                                    @else
+                                        <a href="{{ asset($resume->file_path) }}" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-1 rounded shadow" download>
+                                            <i class="fas fa-download"></i> Download
+                                        </a>
+                                    @endif
                                 @else
                                     <span class="text-red-500">No Resume Uploaded</span>
                                 @endif
                             </td>
+                                                      
                             <td class="p-3 border border-gray-300 text-center">
                                 <form action="{{ route('admin.applications.destroy', $application->id) }}" method="POST"
                                     onsubmit="return confirm('Are you sure you want to delete this application?');">

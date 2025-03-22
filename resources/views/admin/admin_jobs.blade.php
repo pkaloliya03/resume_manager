@@ -14,33 +14,33 @@
         <table class="w-full border-collapse border border-gray-300">
             <thead>
                 <tr class="bg-gray-800 text-white text-left">
-                    <th class="py-3 px-4">ID</th>
-                    <th class="py-3 px-4">Title</th>
-                    <th class="py-3 px-4">Company</th>
-                    <th class="py-3 px-4">Education</th>
-                    <th class="py-3 px-4">Experience</th>
-                    <th class="py-3 px-4">Location</th>
-                    <th class="py-3 px-4">Salary</th>
-                    <th class="py-3 px-4 text-center">Actions</th>
+                    <th class="p-3 border border-gray-300 text-center">ID</th>
+                    <th class="p-3 border border-gray-300 text-center">Title</th>
+                    <th class="p-3 border border-gray-300 text-center">Company</th>
+                    <th class="p-3 border border-gray-300 text-center">Education</th>
+                    <th class="p-3 border border-gray-300 text-center">Experience</th>
+                    <th class="p-3 border border-gray-300 text-center">Location</th>
+                    <th class="p-3 border border-gray-300 text-center">Salary</th>
+                    <th class="p-3 border border-gray-300 text-center">Actions</th>
                 </tr>
             </thead>
             <tbody class="text-gray-700">
                 @foreach($jobs as $job)
                 <tr class="border border-gray-300 hover:bg-gray-100 transition duration-200">
-                    <td class="py-3 px-4">{{ $job->id }}</td>
-                    <td class="py-3 px-4 font-semibold">{{ $job->title }}</td>
-                    <td class="py-3 px-4">{{ $job->company_name }}</td>
-                    <td class="py-3 px-4">{{ $job->education }}</td>
-                    <td class="py-3 px-4">{{ $job->experience }}</td>
-                    <td class="py-3 px-4">{{ $job->location }}</td>
-                    <td class="py-3 px-4">
+                    <td class="p-3 border border-gray-300 text-center">{{ $job->id }}</td>
+                    <td class="p-3 border border-gray-300 text-center">{{ $job->title }}</td>
+                    <td class="p-3 border border-gray-300 text-center font-bold">{{ $job->company_name }}</td>
+                    <td class="p-3 border border-gray-300 text-center">{{ $job->education }}</td>
+                    <td class="p-3 border border-gray-300 text-center">{{ $job->experience }}</td>
+                    <td class="p-3 border border-gray-300 text-center">{{ $job->location }}</td>
+                    <td class="p-3 border border-gray-300 text-center font-bold">
                         @if(preg_match('/\d/', $job->salary)) 
                             {!! preg_replace('/(\d[\d,.]*)/', '₹$1', $job->salary) !!}
                         @else 
                             {{ $job->salary ?? 'N/A' }}
                         @endif
                     </td>                                                           
-                    <td class="py-3 px-4 text-center">
+                    <td class="p-3 border border-gray-300 text-center">
                         <div class="flex justify-center space-x-3">
                             <a href="{{ route('admin.jobs.edit', $job->id) }}" class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded shadow text-sm transition">
                                 <i class="fas fa-edit"></i> Edit

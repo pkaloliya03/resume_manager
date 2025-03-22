@@ -31,6 +31,12 @@
             </div>
 
             <div class="mb-3">
+                <label class="form-label">Date of Birth</label>
+                <input type="text" name="dob" class="form-control" 
+                    value="{{ old('dob', \Carbon\Carbon::parse($user->dob)->format('d-m-Y')) }}" required>
+            </div>                        
+
+            <div class="mb-3">
                 <label class="form-label">Age</label>
                 <input type="number" name="age" class="form-control" value="{{ $user->age }}" required>
             </div>

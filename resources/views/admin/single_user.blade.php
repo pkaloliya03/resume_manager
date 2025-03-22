@@ -22,6 +22,10 @@
             <td class="p-2 border border-gray-300">{{ $user->last_name }}</td>
         </tr>
         <tr class="border border-gray-300">
+            <th class="p-2 border border-gray-300">Date Of Birth</th>
+            <td class="p-2 border border-gray-300">{{ \Carbon\Carbon::parse($user->dob)->format('d-m-Y') }}</td>
+        </tr>        
+        <tr class="border border-gray-300">
             <th class="p-2 border border-gray-300">Age</th>
             <td class="p-2 border border-gray-300">{{ $user->age }}</td>
         </tr>

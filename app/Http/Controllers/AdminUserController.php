@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
+
 
 class AdminUserController extends Controller
 {
@@ -41,6 +43,7 @@ class AdminUserController extends Controller
         $request->validate([
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
+            'dob' => 'required|date_format:d-m-Y', // Validate Date of Birth
             'age' => 'required|integer',
             'gender' => 'required|string',
             'education' => 'nullable|string|max:255',
@@ -51,6 +54,7 @@ class AdminUserController extends Controller
             'first_name' => $request->first_name,
             'middle_name' => $request->middle_name,
             'last_name' => $request->last_name,
+            'dob' => \Carbon\Carbon::createFromFormat('d-m-Y', $request->dob)->format('Y-m-d'), // Ensure correct date format
             'age' => $request->age,
             'gender' => $request->gender,
             'education' => $request->education,
@@ -59,6 +63,7 @@ class AdminUserController extends Controller
 
         return redirect()->route('admin.users.index')->with('success', 'User updated successfully.');
     }
+
 
     public function deleteUser($id)
     {

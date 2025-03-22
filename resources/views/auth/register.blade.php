@@ -144,6 +144,7 @@
                 icon.classList.replace("fa-eye", "fa-eye-slash");
             }
         }
+        
     </script>
 </body>
 

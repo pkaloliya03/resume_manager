@@ -8,9 +8,9 @@
         <table class="w-full border-collapse border border-gray-300">
             <thead>
                 <tr class="bg-gray-800 text-white text-left">
-                    <th class="p-3 border border-gray-300">User ID</th>
-                    <th class="p-3 border border-gray-300">Uploaded By</th>
-                    <th class="p-3 border border-gray-300">Filename</th>
+                    <th class="p-3 border border-gray-300 text-center">User ID</th>
+                    <th class="p-3 border border-gray-300 text-center">Uploaded By</th>
+                    <th class="p-3 border border-gray-300 text-center">Filename</th>
                     <th class="p-3 border border-gray-300 text-center">View</th>
                     <th class="p-3 border border-gray-300 text-center">Delete</th>
                 </tr>
@@ -18,11 +18,11 @@
             <tbody class="text-gray-700">
                 @foreach($resumes as $resume)
                 <tr class="border border-gray-300 hover:bg-gray-100 transition duration-200">
-                    <td class="p-3 border border-gray-300">{{ $resume->user ? $resume->user->id : 'Unknown' }}</td>
-                    <td class="p-3 border border-gray-300">
+                    <td class="p-3 border border-gray-300 text-center">{{ $resume->user ? $resume->user->id : 'Unknown' }}</td>
+                    <td class="p-3 border border-gray-300 text-center font-bold">
                         {{ $resume->user ? $resume->user->first_name . ' ' . $resume->user->middle_name . ' ' . $resume->user->last_name : 'Unknown' }}
                     </td>
-                    <td class="p-3 border border-gray-300">{{ basename($resume->file_path) }}</td>
+                    <td class="p-3 border border-gray-300 text-center">{{ basename($resume->file_path) }}</td>
                     <td class="p-3 border border-gray-300 text-center">
                         @php
                             $fileExtension = pathinfo($resume->file_path, PATHINFO_EXTENSION);
