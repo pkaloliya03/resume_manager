@@ -33,7 +33,7 @@ class JobController extends Controller
             'education' => 'required|string',
             'experience' => 'required|string',
             'location' => 'required|string',
-            'salary' => 'nullable|numeric',
+            'salary' => 'nullable|string|max:255', // Ensure it's string, not numeric
             'job_type' => 'required|in:Full-time,Part-time,Internship',
             'work_mode' => 'required|in:On-site,Remote,Hybrid',
             'required_skills' => 'required|string',

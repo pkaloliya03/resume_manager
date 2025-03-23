@@ -28,10 +28,11 @@
             <input type="text" name="location" class="border p-2 w-full mb-4" required>
 
             <!-- Salary -->
-            <label class="block mb-2">Salary:</label>
-            <input type="text" name="salary" class="border p-2 w-full mb-4"
+            <label for="salary" class="block mb-2">Salary:</label>
+            <input type="text" id="salary" name="salary" class="border p-2 w-full mb-4"
                 placeholder="Enter salary (e.g., 50,000 - 80,000 per month)"
-                value="{{ old('salary', $job->salary ?? '') }}">
+                value="{{ old('salary', isset($job) ? $job->salary : '') }}">
+
 
             <!-- Job Type -->
             <label class="block mb-2">Job Type:</label>

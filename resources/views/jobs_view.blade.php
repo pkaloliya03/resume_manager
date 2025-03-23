@@ -58,7 +58,13 @@
                         <p><strong>Company:</strong> {{ $job->company_name }}</p>
                         <p><strong>Location:</strong> {{ $job->location }}</p>
                         <p><strong>Experience:</strong> {{ $job->experience }}</p>
-                        <p><strong>Salary:</strong> ₹{{ number_format($job->salary, 2) ?? 'N/A' }}</p>
+                        <p><strong>Salary:</strong> 
+                            @if(preg_match('/\d/', $job->salary)) 
+                                {!! preg_replace('/(\d[\d,.]*)/', '₹$1', e($job->salary)) !!}
+                            @else 
+                                {{ $job->salary ?? 'N/A' }}
+                            @endif
+                        </p>                        
                         <p><strong>Education:</strong> {{ $job->education }}</p>
                         <p><strong>Job Type:</strong> {{ $job->job_type }}</p>
                         <p><strong>Work Mode:</strong> {{ $job->work_mode }}</p>

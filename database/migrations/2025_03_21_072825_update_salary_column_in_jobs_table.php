@@ -8,15 +8,15 @@ return new class extends Migration {
     public function up()
     {
         Schema::table('jobs', function (Blueprint $table) {
-            $table->string('salary')->change(); // Changing salary column to VARCHAR
+            $table->string('salary')->nullable()->change(); // Change salary to string (VARCHAR)
         });
     }
 
     public function down()
     {
         Schema::table('jobs', function (Blueprint $table) {
-            $table->integer('salary')->change(); // Reverting back to integer if needed
-        });
+            $table->integer('salary')->nullable()->change(); // Revert if needed
+        }); 
     }
 };
 

@@ -75,3 +75,4 @@ Route::middleware(['auth:admin'])->prefix('admin')->group(function () {
         Route::delete('/{id}', [AdminJobController::class, 'destroy'])->name('admin.applications.destroy');
     });
 });
+    

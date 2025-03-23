@@ -35,11 +35,11 @@
                     <td class="p-3 border border-gray-300 text-center">{{ $job->location }}</td>
                     <td class="p-3 border border-gray-300 text-center font-bold">
                         @if(preg_match('/\d/', $job->salary)) 
-                            {!! preg_replace('/(\d[\d,.]*)/', '₹$1', $job->salary) !!}
+                            {!! preg_replace('/(\d[\d,.]*)/', '₹$1', e($job->salary)) !!}
                         @else 
                             {{ $job->salary ?? 'N/A' }}
                         @endif
-                    </td>                                                           
+                    </td>                                                                               
                     <td class="p-3 border border-gray-300 text-center">
                         <div class="flex justify-center space-x-3">
                             <a href="{{ route('admin.jobs.edit', $job->id) }}" class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded shadow text-sm transition">
