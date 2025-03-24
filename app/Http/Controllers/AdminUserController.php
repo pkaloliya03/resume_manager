@@ -42,11 +42,13 @@ class AdminUserController extends Controller
     {
         $request->validate([
             'first_name' => 'required|string|max:255',
+            'middle_name' => 'nullable|string|max:255',
             'last_name' => 'required|string|max:255',
             'dob' => 'required|date_format:d-m-Y', // Validate Date of Birth
             'age' => 'required|integer',
             'gender' => 'required|string',
-            'education' => 'nullable|string|max:255',
+            'role' => 'required|in:student,employee',
+            'education' => $request->role === 'student' ? 'required|in:10th,Diploma/12th,Graduation,Post-Graduation' : 'nullable',
             'experience' => 'nullable|string|max:255',
         ]);
 
@@ -57,6 +59,7 @@ class AdminUserController extends Controller
             'dob' => \Carbon\Carbon::createFromFormat('d-m-Y', $request->dob)->format('Y-m-d'), // Ensure correct date format
             'age' => $request->age,
             'gender' => $request->gender,
+            'role' => $request->role,
             'education' => $request->education,
             'experience' => $request->experience,
         ]);

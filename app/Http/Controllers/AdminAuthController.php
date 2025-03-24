@@ -27,10 +27,10 @@ class AdminAuthController extends Controller
         ]);
 
         // Auto-login the admin after registration (optional)
-        Auth::guard('admin')->login($admin);
+        //Auth::guard('admin')->login($admin);
 
         // Redirect to dashboard
-        return redirect()->route('admin.home')->with('success', 'Registration successful! Welcome to the admin panel.');
+        return redirect()->route('admin.login')->with('success', 'Registered successful!');
     }
 
     // Show Login Form

@@ -2,48 +2,50 @@
 
 @section('content')
 <div class="container mx-auto p-6">
-    <h2 class="text-2xl font-bold mb-4">User Details</h2>
+    <h2 class="text-2xl font-bold text-center text-600 mb-6">User Details</h2>
     
     <table class="table-auto w-full border-collapse border border-gray-300 bg-white shadow-md">
         <tr class="border border-gray-300">
             <th class="p-2 border border-gray-300">ID</th>
-            <td class="p-2 border border-gray-300">{{ $user->id }}</td>
+            <td class="p-2 border border-gray-300 text-center">{{ $user->id ?? '-' }}</td>
         </tr>
         <tr class="border border-gray-300">
             <th class="p-2 border border-gray-300">First Name</th>
-            <td class="p-2 border border-gray-300">{{ $user->first_name }}</td>
+            <td class="p-2 border border-gray-300 text-center">{{ $user->first_name ?? '-' }}</td>
         </tr>
         <tr class="border border-gray-300">
             <th class="p-2 border border-gray-300">Middle Name</th>
-            <td class="p-2 border border-gray-300">{{ $user->middle_name }}</td>
+            <td class="p-2 border border-gray-300 text-center">{{ $user->middle_name ?? '-' }}</td>
         </tr>
         <tr class="border border-gray-300">
             <th class="p-2 border border-gray-300">Last Name</th>
-            <td class="p-2 border border-gray-300">{{ $user->last_name }}</td>
+            <td class="p-2 border border-gray-300 text-center">{{ $user->last_name ?? '-' }}</td>
         </tr>
         <tr class="border border-gray-300">
             <th class="p-2 border border-gray-300">Date Of Birth</th>
-            <td class="p-2 border border-gray-300">{{ \Carbon\Carbon::parse($user->dob)->format('d-m-Y') }}</td>
+            <td class="p-2 border border-gray-300 text-center">
+                {{ $user->dob ? \Carbon\Carbon::parse($user->dob)->format('d-m-Y') : '-' }}
+            </td>
         </tr>        
         <tr class="border border-gray-300">
             <th class="p-2 border border-gray-300">Age</th>
-            <td class="p-2 border border-gray-300">{{ $user->age }}</td>
+            <td class="p-2 border border-gray-300 text-center">{{ $user->age ?? '-' }}</td>
         </tr>
         <tr class="border border-gray-300">
             <th class="p-2 border border-gray-300">Gender</th>
-            <td class="p-2 border border-gray-300">{{ $user->gender }}</td>
+            <td class="p-2 border border-gray-300 text-center">{{ $user->gender ?? '-' }}</td>
         </tr>
         <tr class="border border-gray-300">
             <th class="p-2 border border-gray-300">Role</th>
-            <td class="p-2 border border-gray-300">{{ $user->role }}</td>
+            <td class="p-2 border border-gray-300 text-center">{{ $user->role ?? '-' }}</td>
         </tr>
         <tr class="border border-gray-300">
             <th class="p-2 border border-gray-300">Education</th>
-            <td class="p-2 border border-gray-300">{{ $user->education }}</td>
+            <td class="p-2 border border-gray-300 text-center">{{ $user->education ?? '-' }}</td>
         </tr>
         <tr class="border border-gray-300">
             <th class="p-2 border border-gray-300">Experience</th>
-            <td class="p-2 border border-gray-300">{{ $user->experience }}</td>
+            <td class="p-2 border border-gray-300 text-center">{{ $user->experience ?? '-' }}</td>
         </tr>
     </table>
 

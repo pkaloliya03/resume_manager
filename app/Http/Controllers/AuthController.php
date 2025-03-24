@@ -20,15 +20,15 @@ class AuthController extends Controller
         // Validate Input
         $request->validate([
             'first_name' => 'required|string|max:255',
-            'middle_name' => 'required|string|max:255',
+            'middle_name' => 'nullable|string|max:255',
             'last_name' => 'required|string|max:255',
             'dob' => 'required|date',
             'age' => 'required|integer|min:1',
-            'gender' => 'required|string',
+            'gender' => 'required|string|in:Male,Female,Other',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|string|min:8|confirmed',
             'role' => 'required|in:student,employee',
-            'education' => $request->role === 'student' ? 'required|string|max:255' : 'nullable',
+            'education' => $request->role === 'student' ? 'required|in:10th,Diploma/12th,Graduation,Post-Graduation' : 'nullable',
             'experience' => $request->role === 'employee' ? 'required|string|max:255' : 'nullable',
         ]);
 
@@ -37,12 +37,14 @@ class AuthController extends Controller
             return redirect()->back()->withErrors(['email' => 'This email is already registered.'])->withInput();
         }
 
+        $dobFormatted = date('Y-m-d', strtotime($request->dob));
+
         // Create User
         User::create([
             'first_name' => $request->first_name,
             'middle_name' => $request->middle_name,
             'last_name' => $request->last_name,
-            'dob' => $request->dob,
+            'dob' => $dobFormatted,
             'age' => $request->age,
             'gender' => $request->gender,
             'email' => $request->email,
