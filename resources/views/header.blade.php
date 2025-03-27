@@ -75,6 +75,12 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('contact') }}">Contact Us</a>
                                 </li>
+                                @auth
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('dashboard') }}">Dashboard</a>
+                                    </li>
+                                @endauth
+
 
                                 @auth
                                     <li class="nav-item">

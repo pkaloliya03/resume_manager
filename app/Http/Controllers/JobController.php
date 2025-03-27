@@ -8,6 +8,7 @@ use App\Models\JobApplication;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\Resume;
+use Carbon\Carbon;
 
 class JobController extends Controller
 {
@@ -123,6 +124,36 @@ class JobController extends Controller
         return response()->json(['hasApplied' => $hasApplied]);
     }
 
+    // public function submitApplication($jobId)
+    // {
+
+    //     if (!Auth::check()) {
+    //         return redirect()->route('login')->with('error', 'You need to log in to apply for a job.');
+    //     }
+
+    //     $user = Auth::user();
+
+
+    //     $hasResume = Resume::where('user_id', $user->id)->exists();
+    //     if (!$hasResume) {
+    //         return redirect()->back()->withErrors(['resume' => 'You must upload your resume before applying for a job.']);
+    //     }
+
+
+    //     $hasApplied = JobApplication::where('user_id', $user->id)->where('job_id', $jobId)->exists();
+    //     if ($hasApplied) {
+    //         return redirect()->back()->with('error', 'You have already applied for this job.');
+    //     }
+
+
+    //     JobApplication::create([
+    //         'user_id' => $user->id,
+    //         'job_id' => $jobId,
+    //     ]);
+
+    //     return redirect()->back()->with('success', 'You have successfully applied for the job.');
+    // }
+
     public function submitApplication($jobId)
     {
         // Check if user is logged in
@@ -144,10 +175,11 @@ class JobController extends Controller
             return redirect()->back()->with('error', 'You have already applied for this job.');
         }
 
-        // Create job application
+        // Create job application with the applied_on date
         JobApplication::create([
             'user_id' => $user->id,
             'job_id' => $jobId,
+            'applied_on' => Carbon::now(), // Store current timestamp
         ]);
 
         return redirect()->back()->with('success', 'You have successfully applied for the job.');

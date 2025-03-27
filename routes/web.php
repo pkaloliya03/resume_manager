@@ -8,10 +8,12 @@ use App\Http\Controllers\AdminJobController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\ResumeController;
+use App\Http\Controllers\UserDashboardController;
 
 Route::view('/', 'index')->name('home');
 Route::view('/about', 'about')->name('about');
 Route::view('/contact', 'contact')->name('contact');
+Route::view('/dashboard', 'dashboard')->name('dashboard');
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
@@ -74,5 +76,10 @@ Route::middleware(['auth:admin'])->prefix('admin')->group(function () {
         Route::post('/{id}/reject', [AdminJobController::class, 'reject'])->name('admin.applications.reject');
         Route::delete('/{id}', [AdminJobController::class, 'destroy'])->name('admin.applications.destroy');
     });
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('dashboard');
+    Route::delete('/delete-resume', [UserDashboardController::class, 'deleteResume'])->name('delete.resume');
 });
     

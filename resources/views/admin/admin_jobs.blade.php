@@ -14,7 +14,7 @@
         <table class="w-full border-collapse border border-gray-300">
             <thead>
                 <tr class="bg-gray-800 text-white text-left">
-                    <th class="p-3 border border-gray-300 text-center">ID</th>
+                    <th class="p-3 border border-gray-300 text-center">Job ID</th>
                     <th class="p-3 border border-gray-300 text-center">Title</th>
                     <th class="p-3 border border-gray-300 text-center">Company</th>
                     <th class="p-3 border border-gray-300 text-center">Education</th>

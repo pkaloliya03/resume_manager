@@ -37,7 +37,6 @@ class ResumeController extends Controller
     }
 
 
-
     public function destroy($id)
     {
         $resume = Resume::find($id);

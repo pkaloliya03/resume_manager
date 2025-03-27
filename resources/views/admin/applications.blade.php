@@ -12,6 +12,7 @@
                         <th class="p-3 border border-gray-300 text-center">User Name</th>
                         <th class="p-3 border border-gray-300 text-center">Company</th>
                         <th class="p-3 border border-gray-300 text-center">Job Title</th>
+                        <th class="p-3 border border-gray-300 text-center">Applied On</th>
                         <th class="p-3 border border-gray-300 text-center">Resume</th>
                         <th class="p-3 border border-gray-300 text-center">Actions</th>
                     </tr>
@@ -25,6 +26,9 @@
                             </td>
                             <td class="p-3 border border-gray-300 text-center font-bold">{{ $application->job->company_name }}</td>
                             <td class="p-3 border border-gray-300 text-center font-bold ">{{ $application->job->title }}</td>
+                            <td class="p-3 border border-gray-300 text-center font-bold ">
+                                {{ \Carbon\Carbon::parse($application->applied_on)->format('d M Y') }}
+                            </td>
                             <td class="p-3 border border-gray-300 text-center">
                                 @php
                                     $resume = $application->user->resume; // Get the user's resume
