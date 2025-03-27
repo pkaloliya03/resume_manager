@@ -32,17 +32,41 @@
 
             <div class="mb-4">
                 <label class="block text-gray-700">Password</label>
-                <input type="password" name="password" required minlength="8" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
+                <input type="password" id="password" name="password" required minlength="8"
+                    class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
             </div>
 
             <div class="mb-4">
                 <label class="block text-gray-700">Confirm Password</label>
-                <input type="password" name="password_confirmation" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
+                <input type="password" id="confirm_password" name="password_confirmation" required
+                    class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
+            </div>
+
+            <!-- Toggle Button -->
+            <div class="mb-4 flex items-center">
+                <input type="checkbox" id="togglePassword" class="mr-2" onclick="togglePasswordVisibility()">
+                <label for="togglePassword" class="text-gray-700">Show Password</label>
             </div>
 
             <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600">Register</button>
         </form>
     </div>
+
+    <script>
+        function togglePasswordVisibility() {
+            var passwordInput = document.getElementById("password");
+            var confirmPasswordInput = document.getElementById("confirm_password");
+            var toggleCheckbox = document.getElementById("togglePassword");
+
+            if (toggleCheckbox.checked) {
+                passwordInput.type = "text";
+                confirmPasswordInput.type = "text";
+            } else {
+                passwordInput.type = "password";
+                confirmPasswordInput.type = "password";
+            }
+        }
+    </script>
 </body>
 
 </html>
