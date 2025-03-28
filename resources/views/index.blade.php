@@ -265,11 +265,6 @@
                     </div>
                 </div>
             </div>
-            @if (session('success'))
-                <div class="alert alert-success">
-                    {{ session('success') }}
-                </div>
-            @endif
             <div class="row">
                 <div class="col-lg-4 col-md-5 offset-md-1">
                     <div class="form_container contact-form">

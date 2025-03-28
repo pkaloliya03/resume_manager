@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Job;
 use App\Models\JobApplication;
+use App\Models\Contact;
 
 class AdminAuthController extends Controller
 {
@@ -68,7 +69,8 @@ class AdminAuthController extends Controller
         $totalUsers = User::count();
         $totalJobs = Job::count();
         $totalApplications = JobApplication::count(); 
+        $totalFeedbacks = Contact::count();
 
-        return view('admin.admin_home', compact('totalUsers', 'totalJobs', 'totalApplications'));
+        return view('admin.admin_home', compact('totalUsers', 'totalJobs', 'totalApplications', 'totalFeedbacks'));
     }
 }

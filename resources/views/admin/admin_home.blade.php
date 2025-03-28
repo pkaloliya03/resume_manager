@@ -19,6 +19,11 @@
                 <h3 class="text-lg font-semibold">Total Applications</h3>
                 <p class="text-3xl font-bold">{{ $totalApplications }}</p>
             </div>
+
+            <div class="bg-yellow-500 text-white p-6 rounded-lg shadow-md">
+                <h3 class="text-lg font-semibold">Total Feedbacks</h3>
+                <p class="text-3xl font-bold">{{ $totalFeedbacks }}</p>
+            </div>
         </div>
     </div>
 @endsection

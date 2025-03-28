@@ -18,18 +18,29 @@ class ContactController extends Controller
         Contact::findOrFail($id)->delete();
         return redirect()->route('admin.contacts')->with('success', 'Contact deleted successfully!');
     }
-    
+
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'phone' => 'required|string|max:15',
-            'email' => 'required|email|max:255',
-            'message' => 'required|string',
-        ]);
+        try {
+            // Validate request
+            $request->validate([
+                'name' => 'required|string|max:255',
+                'phone' => 'required|string|max:15',
+                'email' => 'required|email|max:255',
+                'message' => 'required|string',
+            ]);
 
-        Contact::create($request->all());
+            // Store data
+            Contact::create([
+                'name' => $request->name,
+                'phone' => $request->phone,
+                'email' => $request->email,
+                'message' => $request->message,
+            ]);
 
-        return redirect()->back()->with('success', 'Your message has been sent successfully!');
+            return redirect()->back()->with('success', 'Your message has been sent successfully.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Something went wrong: ' . $e->getMessage());
+        }
     }
 }
