@@ -19,6 +19,7 @@
                 <a href="{{ route('admin.resumes') }}" class="block py-2 px-4 rounded hover:bg-gray-700">Resumes</a>
                 <a href="{{ route('admin.applications') }}" class="block py-2 px-4 rounded hover:bg-gray-700">Applications</a>
                 <a href="{{ route('admin.jobs.index') }}" class="block py-2 px-4 rounded hover:bg-gray-700">Jobs/Recruiters</a>
+                <a href="{{ route('admin.contacts') }}" class="block py-2 px-4 rounded hover:bg-gray-700">Contact Us</a>
 
                 <form action="{{ route('admin.logout') }}" method="POST">
                     @csrf

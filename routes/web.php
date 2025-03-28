@@ -9,6 +9,7 @@ use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\ResumeController;
 use App\Http\Controllers\UserDashboardController;
+use App\Http\Controllers\ContactController;
 
 Route::view('/', 'index')->name('home');
 Route::view('/about', 'about')->name('about');
@@ -81,5 +82,12 @@ Route::middleware(['auth:admin'])->prefix('admin')->group(function () {
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('dashboard');
     Route::delete('/delete-resume', [UserDashboardController::class, 'deleteResume'])->name('delete.resume');
+});
+
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+
+Route::middleware(['auth:admin'])->prefix('admin')->group(function () {
+    Route::get('/contacts', [ContactController::class, 'index'])->name('admin.contacts');
+    Route::delete('/contacts/{id}', [ContactController::class, 'destroy'])->name('admin.contacts.delete');
 });
     
